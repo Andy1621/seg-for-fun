@@ -1,0 +1,63 @@
+# 数据集配置
+DATASET:
+    DATA_DIR: "../user_data/dataset/train_data"
+    NUM_CLASSES: 2 
+    TRAIN_FILE_LIST: "../user_data/dataset/train_data/class4_positive_train_aug.txt"
+    NEGETIVE_TRAIN_FILE_LIST: "../user_data/dataset/train_data/class4_negetive_train.txt"
+    NEGETIVE_RATIO: 0
+    VAL_FILE_LIST: "../user_data/dataset/train_data/class4_val.txt"
+    TEST_FILE_LIST: "../user_data/dataset/testB_list.txt"
+    VIS_FILE_LIST: "../user_data/dataset/testB_list.txt"
+
+# 预训练模型配置
+MODEL:
+    MODEL_NAME: "hrnet"
+    DEFAULT_NORM_TYPE: "bn"
+    HRNET:  
+        HAS_SE: True
+        STAGE2:
+            NUM_CHANNELS: [48, 96]
+        STAGE3:
+            NUM_CHANNELS: [48, 96, 192]
+        STAGE4:
+            NUM_CHANNELS: [48, 96, 192, 384]
+
+# 其他配置
+TRAIN_CROP_SIZE: (256, 256)
+EVAL_CROP_SIZE: (256, 256)
+AUG:
+    AUG_METHOD: "unpadding"
+    FIX_RESIZE_SIZE: (256, 256)
+    MIRROR: True
+    FLIP: True
+    FLIP_RATIO: 0.5
+    RICH_CROP:
+        ENABLE: True
+        MAX_ROTATION: 15
+        MIN_AREA_RATIO: 0.0
+        ASPECT_RATIO: 0.0
+        BRIGHTNESS_JITTER_RATIO: 0.0
+        SATURATION_JITTER_RATIO: 0.0
+        CONTRAST_JITTER_RATIO: 0.0
+        BLUR: True
+        BLUR_RATIO: 0.1
+        GAUSSNOISE: True
+        GAUSSNOISE_RATIO: 0.1
+        RANDOM_ROTATE90: 0
+BATCH_SIZE: 64
+TRAIN:
+    PRETRAINED_MODEL_DIR: "./pretrained_model/HRNet_W48_C_ssld/"
+    MODEL_SAVE_DIR: "../user_data/saved_model/sehrnet_cq_1122_s1/"
+    SNAPSHOT_EPOCH: 10
+TEST:
+    TEST_MODEL: "../user_data/saved_model/sehrnet_cq_1122_s3/best_model/"
+SOLVER:
+    NUM_EPOCHS: 50
+    LR: 0.01
+    LR_POLICY: "poly"
+    OPTIMIZER: "sgd"
+    LOSS: ["dice_loss","bce_loss"]
+    LOSS_WEIGHT:
+        DICE_LOSS: 2
+        BCE_LOSS: 1
+    
