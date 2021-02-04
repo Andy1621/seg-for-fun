@@ -10,7 +10,7 @@
 ## 说明
 
 - [2020 CCF BDCI 遥感地块分割比赛](https://www.datafountain.cn/competitions/475)Top1解决方案
-- 方案介绍见知乎专栏[2020 CCF BDCI 地块分割Top1方案 & 语义分割trick整理](https://github.com/Andy1621/seg-for-fun)
+- 方案介绍见知乎专栏[2020 CCF BDCI 地块分割Top1方案 & 语义分割trick整理](https://zhuanlan.zhihu.com/p/346862877)
 - 基于[PaddleSeg](https://github.com/PaddlePaddle/PaddleSeg)静态图版本开发，现已推出正式2.0动态图版本，建议使用新版动态图，改写更加方便。方案及代码仅供参考，不建议实际运行训练脚本（狗头）
 - 模型和结果见image目录下的README.md。打比赛时由于并未限制模型规模、推理效率，模型融合时把所有的模型都用上了。实际上相同的网络结构，不同规模的模型，融合后提升很小，部分甚至对performance有损害。再者，TTA时尺度放缩影响不大，不同的翻转即可很好提升融合结果
 
